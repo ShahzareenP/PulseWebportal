@@ -1,0 +1,28 @@
+// complete tabs
+.tab-slider-tabs {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  border-radius: 35px;
+  overflow: hidden;
+  background: #dcedef;
+}
+//not active tab
+.tab-slider-tab {
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 600;
+  color: black;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 11px 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+//active tab
+.tab-slider-tab.active {
+  color: #fff;
+  background: #6b6262;
+  border-radius: 35px;
+}

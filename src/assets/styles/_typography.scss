@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+// Currently (19.4.2021), for whatever reason, none of the existing npm Material Icons packages seems to work for the "task_alt" icon
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons+Outlined);
+@import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
+
+$heading-font-family: "'Work Sans', sans-serif";
+
+$typography-config: mat.define-typography-config(
+  $headline-1: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em, $font-family: $heading-font-family),
+  $headline-2: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em, $font-family: $heading-font-family),
+  $headline-3: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em, $font-family: $heading-font-family),
+  $headline-4: mat.define-typography-level(34px, 40px, 400, $font-family: $heading-font-family),
+  $headline-5: mat.define-typography-level(24px, 32px, 400, $font-family: $heading-font-family),
+  $headline-6: mat.define-typography-level(20px, 32px, 400, $font-family: $heading-font-family),
+);

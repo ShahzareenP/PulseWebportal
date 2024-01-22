@@ -1,0 +1,137 @@
+<!-- Loader Component -->
+<papp-loader></papp-loader>
+
+<ng-container *ngIf="loaderFinish">
+  <!-- Header Component -->
+  <papp-page-header [pageHeaderConfig]="pageHeaderConfig"></papp-page-header>
+
+  <!-- Footer Component -->
+  <!-- <papp-page-footer [pageFooterConfig]="pageFooterConfig"></papp-page-footer> -->
+
+  <!-- Breadcrumb Component -->
+  <div class="ms-2">
+    <h3>Breadcrumb</h3>
+    <papp-breadcrumb></papp-breadcrumb>
+    <router-outlet></router-outlet>
+    <hr />
+  </div>
+
+  <!-- Toastr Component -->
+  <div class="ms-2">
+    <h3>Toastr</h3>
+    <button
+      mat-raised-button
+      color="primary"
+      class="me-2"
+      (click)="onClickSuccessToaster()"
+    >
+      Success Toaster
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      class="me-2"
+      (click)="onClickFailedToaster()"
+    >
+      Failed Toaster
+    </button>
+    <button mat-raised-button color="accent" (click)="onClickInfoToaster()">
+      Info Toaster
+    </button>
+  </div>
+
+  <!-- Dialog Component -->
+  <div class="ms-2 mt-4">
+    <h3>Dialog</h3>
+    <button mat-raised-button color="accent" (click)="openDialog()">
+      Open Dialog
+    </button>
+  </div>
+
+  <!-- Pagination demo -->
+  <div class="ms-2 mt-4">
+    <!--  <h3>Pagination</h3>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container
+        [matColumnDef]="column"
+        *ngFor="let column of displayedColumns"
+      >
+        <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+        <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
+    </table> -->
+    <div class="mt-3 float-end me-4">
+      <!-- <papp-paginator
+        (paginatorChange)="onPaginatorChange($event)"
+      ></papp-paginator> -->
+    </div>
+  </div>
+
+  <!-- Auto Complete Demo -->
+  <div class="ms-2 mt-5">
+    <h3>Auto Complete</h3>
+    <papp-auto-complete
+      [autoCompleteConfig]="autoCompleteConfig"
+    ></papp-auto-complete>
+  </div>
+
+  <div class="ms-2 mt-5">
+    <h3>Widget</h3>
+    <papp-widgets [widgetsConfig]="widgetConfig"></papp-widgets>
+  </div>
+
+  <!-- Toggle Switch demo -->
+  <div class="ms-2 mt-5">
+    <h3>Toggle Switch</h3>
+    <papp-toggle-slider
+      [toggleConfig]="toggleConfig"
+      (toggleChange)="toggleChangeEvent($event)"
+    ></papp-toggle-slider>
+    <h5 class="ms-2 mt-2">Toggle Switch Value: {{ toggleValue }}</h5>
+  </div>
+  <papp-data-grid
+    (action)="onTableAction($event)"
+    [dataset]="data"
+    [columns]="columns"
+  >
+  </papp-data-grid>
+</ng-container>
+
+<h5>Bar Chart</h5>
+<papp-bar-chart [barchartdata]="barchartdata"></papp-bar-chart>
+
+<div class="mt-5">
+  <h5>Pie chart</h5>
+  <papp-pie-chart [pieChartConfig]="pieData"></papp-pie-chart>
+</div>
+
+<!-- Switch tab component -->
+<div class="mt-5 mb-5">
+  <h3>Tabs</h3>
+  <div>
+    <papp-switch-tab-view [tabConfig]="tabConfig" (selectedTab)="selectedTab($event)"></papp-switch-tab-view>
+  </div>
+</div>
+<div class="m-4">
+  <div *ngIf="activeTabName === 'tab1'">
+    <h2>Select Tab is: {{ activeTabName }}</h2>
+  </div>
+
+  <div *ngIf="activeTabName === 'tab2'">
+    <h2>Select Tab is: {{ activeTabName }}</h2>
+  </div>
+
+  <div *ngIf="activeTabName === 'tab3'">
+    <h2>Select Tab is: {{ activeTabName }}</h2>
+  </div>
+</div>
+
+
+<div class="m-5" style="width: 50%;">
+  <papp-card-view [cardContent]="cardContent">
+      <h5 card-content>card content aaded dynamically</h5>
+  </papp-card-view>
+</div>

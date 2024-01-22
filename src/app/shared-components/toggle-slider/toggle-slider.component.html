@@ -1,0 +1,9 @@
+<div *ngIf="toggleConfig?.toggleLabel">
+  {{ toggleConfig.toggleLabel }}
+  <mat-slide-toggle
+    color="primary"
+    [checked]="toggleConfig.defaultToggleValue"
+    (change)="toggleChanged($event)"
+  >
+  </mat-slide-toggle>
+</div>

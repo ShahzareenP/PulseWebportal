@@ -1,0 +1,126 @@
+<div class="container">
+  <mat-card class="card p-3" [ngClass]="{ fullscreen: isCardExpanded }">
+    <mat-card-title>
+      <!-- currency dropdown -->
+      <div class="d-flex justify-content-between align-items-center">
+        <div *ngIf="showDropDownInHeader">
+          <mat-form-field class="currency" appearance="outline">
+            <mat-select
+              name="countryString"
+              [(value)]="headerDropDownData[0][headerDropDownKey]"
+              (selectionChange)="onHeaderDropDownChange($event)"
+              placeholder="Select Currency"
+            >
+              <mat-option
+                *ngFor="let data of headerDropDownData"
+                [value]="data[headerDropDownKey]"
+                >{{ data[headerDropDownKey] }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!-- card header -->
+        <div class="card-label">
+          {{ headerLabel }}
+        </div>
+        <div class="">
+          <mat-card-actions class="icon_color">
+            <mat-icon *ngIf="!isCardExpanded" (click)="screenSizeChange()"
+              >fullscreen</mat-icon
+            >
+            <mat-icon *ngIf="isCardExpanded" (click)="screenSizeChange()"
+              >fullscreen_exit</mat-icon
+            >
+            <mat-icon (click)="refreshButtonClicked()">refresh</mat-icon>
+            <mat-icon (click)="copyButtonClicked()">file_copy</mat-icon>
+            <mat-icon (click)="cancelButtonClicked()">close</mat-icon>
+          </mat-card-actions>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content class="mt-2">
+      <!-- tabs -->
+      <div [@.disabled]="true">
+        <mat-tab-group dynamicHeight>
+          <mat-tab
+            class="my-custom-class"
+            *ngFor="let tab of widgetsConfig?.tabViewConfig; let i = index"
+            label="{{ tab?.tabName }}"
+          >
+            <!-- datepicker -->
+            <div
+              label="datepicker"
+              class="mt-2"
+              *ngIf="widgetsConfig?.isShowDatePicker"
+            >
+              <mat-form-field class="w-100 h-25">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" />
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <!-- tab content -->
+            <div class="d-flex">
+              <div class="">
+                <ng-container
+                  *ngTemplateOutlet="content; context: { item: 'BUY' }"
+                ></ng-container>
+              </div>
+              <div class="ms-3">
+                <ng-container
+                  *ngTemplateOutlet="content; context: { item: 'SELL' }"
+                ></ng-container>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <div class="d-flex amount align-items-baseline mt-4">
+        <div *ngIf="showAmountInput">
+          <div class="">EUR:</div>
+          <mat-form-field class="amount_input ms-2" appearance="outline">
+            <input
+              type="text"
+              matInput
+              [formControl]="amountFormControl"
+              placeholder="Enter Amount"
+            />
+          </mat-form-field>
+        </div>
+        <button class="ms-3 transaction-btn" mat-stroked-button>
+          VIEW QUOTE
+        </button>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>
+
+<ng-template #content let-item="item">
+  <div class="trade-value-box">
+    <div class="d-flex">
+      <div class="icon" *ngIf="item=='BUY'">
+        <mat-icon class="mt-1">keyboard_arrow_down</mat-icon>
+      </div>
+      <div class="icon" *ngIf="item=='SELL'">
+        <mat-icon class="mt-1">keyboard_arrow_up</mat-icon>
+      </div>
+      <p class="ms-2">{{ item }}</p>
+    </div>
+    <div>
+      <div class="value-label">Trade Value</div>
+      <div class="amount">$20.5m</div>
+    </div>
+    <div class="line mt-3 mb-4"></div>
+    <div>
+      <div>Number of Trades</div>
+      <div>40</div>
+    </div>
+  </div>
+</ng-template>

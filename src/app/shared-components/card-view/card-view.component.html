@@ -1,0 +1,27 @@
+<div class="card-container">
+    <mat-card>
+        <!-- card header -->
+        <mat-card-header>
+            <mat-card-title>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="card-title">
+                        {{ cardContent!.title }}
+                    </div>
+                    <mat-card-actions class="icons">
+                        <mat-icon class="icon ms-2">fullscreen</mat-icon>
+                        <mat-icon class="icon">more_horiz</mat-icon>
+                    </mat-card-actions>
+                </div>
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{ cardContent!.subTitle }}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <!-- card divider -->
+        <hr class="line me-3 ms-3">
+        <!-- card content -->
+        <mat-card-content>
+            <ng-content select="[card-content]"></ng-content>
+        </mat-card-content>
+    </mat-card>
+</div>

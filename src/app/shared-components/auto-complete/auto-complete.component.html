@@ -1,0 +1,21 @@
+<mat-form-field>
+  <mat-label>{{
+    autoCompleteConfig.selectBoxPlaceholder || "Select Value"
+  }}</mat-label>
+  <mat-select panelClass="panelClass"
+  (selectionChange)="selectionChange($event)">
+    <mat-form-field class="input" appearance="outline">
+      <input
+        matInput
+        [formControl]="inputControl"
+        placeholder="{{
+          autoCompleteConfig.selectBoxPlaceholder || 'Search Option'
+        }}"
+        (keyup)="onKeyUp(this.inputControl.value)"
+      />
+    </mat-form-field>
+    <mat-option *ngFor="let option of selectedOptions" [value]="option">{{
+      option[targetKey]
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>

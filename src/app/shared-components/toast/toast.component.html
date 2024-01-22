@@ -1,0 +1,14 @@
+<div class="d-flex align-items-center">
+  <div class="text-center" *ngIf="data?.type == 'ERROR'">
+    <mat-icon color="warn">warning_amber</mat-icon>
+  </div>
+  <div class="text-center" *ngIf="data?.type == 'SUCCESS'">
+    <mat-icon color="accent">check_circle_outline</mat-icon>
+  </div>
+  <div class="text-center" *ngIf="data?.type == 'INFO'">
+    <mat-icon color="primary">info</mat-icon>
+  </div>
+  <span class="ms-2 text-center">
+    {{ data?.message }}
+  </span>
+</div>

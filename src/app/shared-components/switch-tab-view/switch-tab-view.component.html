@@ -1,0 +1,18 @@
+<div class="container m-0">
+  <div class="tab-slider-nav w-100 float-end mb-3">
+    <ul class="tab-slider-tabs">
+      <li
+        class="tab-slider-tab"
+        *ngFor="let tab of tabConfig?.tabs"
+        [class.active]="activeTab == tab?.name"
+        rel="tab1"
+        (click)="tabChange(tab?.name)"
+      >
+        <div *ngIf="!tabWithIcons">{{ tab?.name }}</div>
+        <mat-icon *ngIf="tabWithIcons">{{ tab?.name }}</mat-icon>
+      </li>
+    </ul>
+  </div>
+  <!-- Display content as per the tab selection. -->
+  <ng-content></ng-content>
+</div>

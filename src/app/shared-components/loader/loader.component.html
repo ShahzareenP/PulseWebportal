@@ -1,0 +1,23 @@
+<ng-container *ngIf="loaderConfigs?.status">
+  <div class="loader-container">
+    <div
+      class="d-flex align-items-center justify-content-center position-absolute w-100 h-100"
+      *ngIf="!loaderConfigs?.loaderURL; else image_loader"
+    >
+      <!--
+            it shows default spinner if URL is not provided for the loader
+        -->
+      <mat-spinner></mat-spinner>
+    </div>
+    <ng-template #image_loader>
+      <!--
+            it shows spinner with URL is provided for the loader
+        -->
+      <div
+        class="d-flex align-items-center justify-content-center position-absolute w-100 h-100"
+      >
+        <img class="loader-img" [src]="loaderConfigs.loaderURL" alt="loader" />
+      </div>
+    </ng-template>
+  </div>
+</ng-container>

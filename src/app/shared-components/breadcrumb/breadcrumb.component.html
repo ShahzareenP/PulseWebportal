@@ -1,0 +1,22 @@
+<div
+  class="breadcrumbs d-flex align-items-center"
+  *ngIf="breadcrumbConfig.length > 0"
+>
+  <div
+    class="p-1"
+    *ngFor="let breadcrumb of breadcrumbConfig; let index = index"
+    [ngClass]="{
+      'active-breadcrumb': activeBreadcrumbLabel === breadcrumb?.label
+    }"
+  >
+    <span (click)="onBreadcrumbClick(breadcrumb)">
+      {{ breadcrumb?.label }}
+    </span>
+    <span
+      class="arrow"
+      *ngIf="index >= 0 && index < breadcrumbConfig.length - 1"
+    >
+      /
+    </span>
+  </div>
+</div>
